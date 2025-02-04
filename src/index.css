@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer components {
+  .padding-layout {
+    @apply 2xl:w-[1600px] xl:w-[1200px] lg:w-[1000px] md:w-full  m-auto px-4;
+  }
+  .title{
+    @apply text-[40px] font-normal text-center;
+  }
+  .smooth{
+    @apply transition-transform duration-500 ease-in-out
+  }
+  .cusFlex{
+    @apply flex items-center justify-center
+  }
+  .hover-header{
+    @apply absolute bottom-0 left-0 right-0 h-[2px] bg-black scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.ant-drawer-header{
+  padding: 0!important;
+}

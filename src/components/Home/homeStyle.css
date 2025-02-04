@@ -1,0 +1,13 @@
+
+/* Đổi màu mũi tên */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px!important; /* Điều chỉnh kích thước icon */
+  color: black; /* Đổi màu mũi tên */
+}
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
