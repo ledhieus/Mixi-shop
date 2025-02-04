@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import InfoUser from "../components/CheckOut/infoUser";
 import InfoCart from "../components/CheckOut/InfoCart";
 import { removeAll } from "../redux/slices/cart";
 import { removeBill } from "../redux/slices/bill";
 import { useNavigate } from "react-router-dom";
 import { postOrder } from "../service/orderService";
+import InfoUser from "../components/CheckOut/infoUser";
 
 const CheckOutPage = () => {
   const dispatch = useDispatch();
