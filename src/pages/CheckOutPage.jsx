@@ -6,7 +6,7 @@ import { removeAll } from "../redux/slices/cart";
 import { removeBill } from "../redux/slices/bill";
 import { useNavigate } from "react-router-dom";
 import { postOrder } from "../service/orderService";
-import InfoUser from "../components/CheckOut/infoUser";
+import InfoUser from "../components/CheckOut/InfoUser";
 
 const CheckOutPage = () => {
   const dispatch = useDispatch();
