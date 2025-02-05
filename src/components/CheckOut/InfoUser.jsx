@@ -5,7 +5,7 @@ import TextInput from "../FormInput/TextInput"
 
 const InfoUser = ({control, handleSubmit, onSubmit}) => {
   return (
-    <div className="px-6 text-[16px] border-r-[1px] border-slate-200 ">
+    <div className="px-6 text-[16px] sm:border-r-[1px] border-slate-200 ">
           <p className="text-[30px]">MIXI SHOP</p>
           <p className="font-normal">Thông tin giao hàng</p>
           <div className="mt-6">

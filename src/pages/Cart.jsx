@@ -63,8 +63,8 @@ const Cart = () => {
         <>
           <div className="padding-layout">
             <p className="font-medium text-[30px] mt-10">Giỏ hàng </p>
-            <div className="flex mt-6">
-              <div className="flex-[2] px-10 py-4 space-y-4">
+            <div className="lg:flex lg:flex-row flex flex-col mt-6">
+              <div className="flex-[2] lg:px-10 lg:py-4 px-0 py-0 space-y-4">
                 {cartItemList.map((item) => (
                   <ItemProduct
                     key={`${item.id}-${item.size}`}

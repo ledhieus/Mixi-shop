@@ -49,14 +49,14 @@ const CheckOutPage = () => {
     
   };
   return (
-    <div className="px-[400px] m-24">
-      <div className="grid grid-cols-2 bg-slate-100 py-6 shadow-sm">
+    <div className="flex items-center justify-center mt-10">
+      <div className="grid sm:grid-cols-2 grid-cols-1 bg-slate-100 py-6 shadow-sm">
         <InfoUser
           control={control}
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
         />
-        <div className="px-10 text-[16px] space-y-6 ">
+        <div className="px-10 text-[16px] space-y-6 py-4 border-t-[1px] mt-4 sm:py-0 sm:border-t-0 sm:mt-0">
           {cartItemList.map((item) => (
             <InfoCart
               key={item.id}
@@ -67,7 +67,7 @@ const CheckOutPage = () => {
               totalBill={totalBill}
             />
           ))}
-          <div className="py-4 border-t-[1px] border-slate-200">
+          <div className="py-4 md:border-t-[1px]  border-slate-200">
             <div className="flex items-center justify-between">
               <p>Tạm tính</p>
               <p>{totalBill}.000đ</p>
@@ -77,7 +77,7 @@ const CheckOutPage = () => {
               <p>30.000đ</p>
             </div>
           </div>
-          <div className="py-4 border-t-[1px] border-slate-200">
+          <div className="py-4 md:border-t-[1px] border-slate-200">
             <div className="flex items-center justify-between">
               <p>Tổng cộng</p>
               <p>{totalBill + 30}.000đ</p>

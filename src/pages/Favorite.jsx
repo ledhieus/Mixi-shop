@@ -30,7 +30,7 @@ const Favorite = () => {
         <p className="text-[35px]">Wishlist</p>
         {favoriteItem.length > 0 ? (
           <>
-            <div className="grid grid-cols-5 gap-8">
+            <div className="grid lg:grid-cols-5 lg:gap-8 md:grid-cols-3 md:gap-6 grid-cols-2 gap-4">
               {favoriteItem.map((item) => (
                 <CartItem
                   key={item.id}

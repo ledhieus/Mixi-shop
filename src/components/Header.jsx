@@ -95,9 +95,9 @@ const Header = ({ countFavorite, countCart, setIsShowing }) => {
                 setIsShowing(true);
               }}
             />
-            <div className="relative group hidden lg:flex">
+            <div className="relative group hidden lg:flex p-2">
               <FontAwesomeIcon icon={faUser} className="cursor-pointer" />
-              <div className="absolute top-[28px] left-[-35px] bg-black text-white flex-col w-[90px] text-[14px] hidden group-hover:flex">
+              <div className="absolute top-[30px] left-[-30px] bg-black text-white flex-col w-[90px] text-[14px] hidden group-hover:flex">
                 {checkLogin ? (
                   <>
                     <Link className="p-2 hover:bg-slate-800" to={"/account"}>

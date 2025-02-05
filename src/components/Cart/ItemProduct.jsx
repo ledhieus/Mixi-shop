@@ -9,22 +9,24 @@ import { useDispatch } from "react-redux";
 import { updateTotalBill } from "../../redux/slices/totalBill";
 
 const ItemProduct = ({ id, size, handleClick, stock, quantity, itemOrder }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [cartItem, setCartItem] = useState([]);
   const [updateQuantity, setUpdateQuantity] = useState(quantity);
   // const cartItemList = getCart()
   // console.log(cartItemList)
-  useEffect(()=> {
-    const updateCart = (newQuantity)=> {
+  useEffect(() => {
+    const updateCart = (newQuantity) => {
       // const cartItemList = getCart()
-      const updatedCart = itemOrder.map(item=> (
-        item.id === id && item.size === size ? {...item, quantity: newQuantity} : item
-      ))
-      setCart(updatedCart)
-      dispatch(updateTotalBill(updatedCart))
-    }
-    updateCart(updateQuantity)
-  }, [updateQuantity, id, size, dispatch, itemOrder])
+      const updatedCart = itemOrder.map((item) =>
+        item.id === id && item.size === size
+          ? { ...item, quantity: newQuantity }
+          : item
+      );
+      setCart(updatedCart);
+      dispatch(updateTotalBill(updatedCart));
+    };
+    updateCart(updateQuantity);
+  }, [updateQuantity, id, size, dispatch, itemOrder]);
   useEffect(() => {
     const fetchApi = async () => {
       const data = await getItem(`/products?id=${id}`);
@@ -52,7 +54,7 @@ const ItemProduct = ({ id, size, handleClick, stock, quantity, itemOrder }) => {
           <div className="flex items-center gap-4">
             <FontAwesomeIcon
               icon={faX}
-              className="cursor-pointer"
+              className="cursor-pointer text-[14px]"
               onClick={() => {
                 handleClick(id, size);
               }}
@@ -63,9 +65,20 @@ const ItemProduct = ({ id, size, handleClick, stock, quantity, itemOrder }) => {
             <div>
               <p className="text-[16px]">{item.title}</p>
               {size && <p className="text-[14px] text-stone-400">{size}</p>}
+              <div className="flex items-center gap-4 mt-2 md:hidden">
+                <p className="text-[#155BF6]">
+                  {item.price * updateQuantity}.000đ
+                </p>
+                <InputQuantity
+                  stock={stock}
+                  quantity={updateQuantity}
+                  setQuantity={setUpdateQuantity}
+                  handleOnchange={handleOnchange}
+                />
+              </div>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="md:flex items-center justify-between gap-2 hidden">
             <p className="text-[#155BF6]">{item.price * updateQuantity}.000đ</p>
             <InputQuantity
               stock={stock}

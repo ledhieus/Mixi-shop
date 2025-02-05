@@ -46,34 +46,63 @@ const Collection = () => {
     console.log("OK");
   };
   const formValue = watch();
-  useEffect(()=> {
-    setFilterForm(formValue)
-  }, [formValue])
   useEffect(() => {
-    
-    if (!filterForm.arrange && !filterForm.price && !filterForm.category) return;
-    let updatedArrangeItem = { ...arrangeItem };
-    const arrangeMapping = {
-      "Tên A-Z": { sort: "slug", order: "asc" },
-      "Tên Z-A": { sort: "slug", order: "desc" },
-      "Giá tăng dần": { sort: "price", order: "asc" },
-      "Giá giảm dần": { sort: "price", order: "desc" },
-    };
-    if (arrangeMapping[filterForm.arrange]) {
-      updatedArrangeItem.arrange = arrangeMapping[filterForm.arrange];
-    }
-    if (filterForm.price) {
-      if (filterForm.price === "all") {
-        updatedArrangeItem.price = "";
-      } else {
-        const [gte, lte] = filterForm.price.split("-");
-        updatedArrangeItem.price = { gte, lte };
+    setFilterForm(prev => {
+      return JSON.stringify(prev) === JSON.stringify(formValue) ? prev : formValue;
+    });
+  }, [formValue]);
+
+  // useEffect(() => {
+  //   if (!filterForm.arrange && !filterForm.price && !filterForm.category) return;
+  //   let updatedArrangeItem = { ...arrangeItem };
+  //   const arrangeMapping = {
+  //     "Tên A-Z": { sort: "slug", order: "asc" },
+  //     "Tên Z-A": { sort: "slug", order: "desc" },
+  //     "Giá tăng dần": { sort: "price", order: "asc" },
+  //     "Giá giảm dần": { sort: "price", order: "desc" },
+  //   };
+  //   if (arrangeMapping[filterForm.arrange]) {
+  //     updatedArrangeItem.arrange = arrangeMapping[filterForm.arrange];
+  //   }
+  //   if (filterForm.price) {
+  //     if (filterForm.price === "all") {
+  //       updatedArrangeItem.price = "";
+  //     } else {
+  //       const [gte, lte] = filterForm.price.split("-");
+  //       updatedArrangeItem.price = { gte, lte };
+  //     }
+  //   }
+  //   if (filterForm.category) {
+  //     updatedArrangeItem.category = filterForm.category;
+  //   }
+  //   setArrangeItem(updatedArrangeItem);
+  // }, [filterForm.arrange, filterForm.price, filterForm.category]);
+  useEffect(() => {
+    setArrangeItem(prev => {
+      let updatedArrangeItem = { ...prev };
+      const arrangeMapping = {
+        "Tên A-Z": { sort: "slug", order: "asc" },
+        "Tên Z-A": { sort: "slug", order: "desc" },
+        "Giá tăng dần": { sort: "price", order: "asc" },
+        "Giá giảm dần": { sort: "price", order: "desc" },
+      };
+      if (arrangeMapping[filterForm.arrange]) {
+        updatedArrangeItem.arrange = arrangeMapping[filterForm.arrange];
       }
-    }
-    if (filterForm.category) {
-      updatedArrangeItem.category = filterForm.category;
-    }
-    setArrangeItem(updatedArrangeItem);
+      if (filterForm.price) {
+        if (filterForm.price === "all") {
+          updatedArrangeItem.price = "";
+        } else {
+          const [gte, lte] = filterForm.price.split("-");
+          updatedArrangeItem.price = { gte, lte };
+        }
+      }
+      if (filterForm.category) {
+        updatedArrangeItem.category = filterForm.category;
+      }
+      
+      return JSON.stringify(updatedArrangeItem) === JSON.stringify(prev) ? prev : updatedArrangeItem;
+    });
   }, [filterForm.arrange, filterForm.price, filterForm.category]);
   useEffect(() => {
     if (slug === "all") return;

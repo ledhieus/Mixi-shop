@@ -6,7 +6,7 @@ import FormField from "../FormField";
 import { useForm } from "react-hook-form";
 import PriceArrange from "../FormInput/PriceArrange";
 import CategoryArrange from "../FormInput/CategoryArrange";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const DrawerFilter = ({ onClose, open, setFilterForm }) => {
   const { control, watch } = useForm({
@@ -18,9 +18,15 @@ const DrawerFilter = ({ onClose, open, setFilterForm }) => {
     },
   });
   const formValue = watch();
-  useEffect(()=> {
-      setFilterForm(formValue)
-    }, [formValue, setFilterForm])
+  const prevFormValue = useRef(formValue);
+
+  useEffect(() => {
+    if (JSON.stringify(prevFormValue.current) !== JSON.stringify(formValue)) {
+      setFilterForm(formValue);
+      prevFormValue.current = formValue;
+    }
+  }, [formValue, setFilterForm]);
+
   return (
     <>
       <Drawer

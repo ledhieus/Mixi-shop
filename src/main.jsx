@@ -18,6 +18,7 @@ import Login from "./pages/auth/Login";
 import CheckOutPage from "./pages/CheckOutPage";
 import Success from "./pages/Success";
 import SearchPage from "./pages/SearchPage";
+import PrivateRouter from "./components/PrivateRouter";
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
@@ -43,20 +44,25 @@ const router = createBrowserRouter([
         element: <Favorite />,
       },
       {
-        path: "/account",
-        element: <Account />,
-      },
-      {
-        path: "/checkout",
-        element: <CheckOutPage />,
-      },
-      {
-        path: "/success",
-        element: <Success />,
-      },
-      {
         path: "/search/:slugSearch",
         element: <SearchPage />,
+      },
+      {
+        element: <PrivateRouter/>,
+        children: [
+          {
+            path: "/account",
+            element: <Account />,
+          },
+          {
+            path: "/success",
+            element: <Success />,
+          },
+          {
+            path: "/checkout",
+            element: <CheckOutPage />,
+          },
+        ]
       },
       {
         element: <AuthLayout/>,

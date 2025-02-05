@@ -56,8 +56,8 @@ const SearchForm = ({ setIsShowing }) => {
       <div className="fixed top-0 w-full z-[9999]">
         <div className=" bg-white text-black">
           <div className="padding-layout flex items-center justify-between gap-6 py-4">
-            <Link to={"/"}>
-              <img src="/logo.webp" className="w-[140px]" />
+            <Link to={"/"} className="hidden md:flex">
+              <img src="./logo.webp" className="w-[140px]" />
             </Link>
             <div className="w-[650px] relative">
               <div className="border border-black rounded-full flex pl-4 pr-1 py-1 items-center">
@@ -88,7 +88,7 @@ const SearchForm = ({ setIsShowing }) => {
                 />
               )}
             </div>
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 items-center hidden md:flex">
               <FontAwesomeIcon
                 icon={faSearch}
                 onClick={() => setIsShowing(false)}
